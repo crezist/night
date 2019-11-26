@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ajax1.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta charset="UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+  </head>
+  
+  <body>
+    This is my HTML pag. <br>
+    <button id="bt1">get方法请求、设置onreadystatechange</button>
+    <button id="bt2">post发放请求</button>
+    <button id="bt3">二级绑定事件</button>
+    
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    
+    
+  </body>
+  
+ 
+  <script type="text/javascript">
+   alert(1);
+  
+   document.getElementById("bt1").onclick=function(){
+   var ajax=getXmlHttpRequest();
+   ajax.onreadystatechange=function(){
+    if(ajax.readyState==4){
+      document.getElementById("div2").innerHTML=ajax.responseText;
+   } 
+   }
+   ajax.open("get","/xm/ajaxctl/ajax?aname=ee&aid=10");
+   ajax.send();
+  }
+  
+  
+  
+  
+   document.getElementById("bt2").onclick=function(){
+   var ajax=getXmlHttpRequest();
+   ajax.onreadystatechange=function(){
+   if(ajax.readyState==4){
+   document.getElementById("div3").innerHTML=ajax.responseText;
+   }
+   }
+   ajax.open("post","/xm/ajaxctl/ajax");
+   ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+   ajax.send("aname=xiaom&aid=99");
+  }
+  
+   window.setInterval(function() {
+   document.getElementById("div1").innerHTML=new Date();
+   }, 1000);
+   
+  
+   document.getElementById("bt3").addEventListener("click", function(e) {
+   	alert(1);
+   })
+   
+ /*   $("# . []").click(function(){
+   
+   })
+  */
+  
+/*   var ajax=getXmlHttpRequest();
+  console.log("获取ajax对象"+ajax); */
+  
+  function getXmlHttpRequest(){
+  if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+  return new XMLHttpRequest();
+  }
+  else{// code for IE6, IE5
+  return new ActiveXObject("Microsoft.XMLHTTP");
+  } 
+  }
+  
+  
+  //$.get
+  //$.post
+  //$.getJSON
+  //$.getScript(url,function(){})
+  //$.load(url,function(){})
+  //$(window).ajaxStart(function(){})
+  //$(window).ajaxSend(function(){})
+  //$(window).ajaxError(function(){})
+  
+  </script>
+</html>

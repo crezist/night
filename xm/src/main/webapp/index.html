@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>index.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta  charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/xm/dist/css/bootstrap.min.css">
+    <style type="text/css">
+    .total{
+    width:100%;
+    height:550px;
+    margin:0px;
+    padding: 0px;
+    
+    }
+    .top{
+      width:100%;
+      height:50px;
+      float: left;
+      background-color: pink;
+    }
+    .left{
+    width:12%;
+    height:500px;
+    float:left;
+    background-color:#578345;
+    border:0px;
+  
+    }
+    .right:{
+    width:88%;
+    height:500px;
+    float:left;
+    border:0px;
+    background-color:green;
+    }
+    
+    .right iframe{
+    width:88%;
+    height:500px;
+    border:0px;
+    }
+    
+    .left a{
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    width:80px;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    background-color: #999999;
+    color:#333333;
+    margin-left:30px;
+    }
+    
+    </style>
+  </head>
+   <div class="total" >
+  <div class="top" >
+  <i class="glyphicon glyphicon-leaf" style="font-size:30px;line-height:50px"></i>
+  </div>
+  <div class="left " >
+  <a href="/xm/areainfoctl/getlimitareainfo" target="main">
+  <i class="glyphicon glyphicon-cog text-primary"></i>查看地区</a>
+  <a href="/xm/Typeinfoctl/getlimitTypeinfo" target="main">
+  <i class="glyphicon glyphicon-cog text-primary"></i>查看类型</a>
+  <a href="/xm/areainfoctl/getlimitareainfo" target="main">
+  <i class="glyphicon glyphicon-cog text-primary"></i>查看地区</a>
+  </div>
+  <div class="right">
+  <iframe name="main"></iframe>
+  </div>
+  </div>
+  <body>
+    
+  </body>
+</html>

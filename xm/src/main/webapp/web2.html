@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ajax2.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta charset="UTF-8">
+
+<link rel="stylesheet" type="text/css" href="/xm/dist/css/bootstrap.css">
+<script type="text/javascript" src="/xm/sysjs/jquery.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div>
+			<table id="tb1" class="table table-hover text-center">
+				<thead>
+					<tr>
+						<td>地区编号</td>
+						<td>地区名称</td>
+						<td>地区级别</td>
+						<td>地区上级</td>
+						<td>地区操作</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+		<div id="div2">
+			<button class="btn btn-link" pn=1>首页</button>
+			<button class="btn btn-link" previous="0">上一页</button>
+			<span id="sp"></span>
+			<button class="btn btn-link" next="0">下一页</button>
+			<button class="btn btn-link" pn=0>尾页</button>
+		</div>
+	</div>
+
+</body>
+
+
+<script type="text/javascript">
+	$("").ready(function() {
+
+      getareainfo(1);
+       
+                                           //为什么尾页不能直接放result.pages进参数
+                                           //放进去就多次调用是为什么？span里的button就不会
+      $("#div2>button").click(function(){
+            getareainfo($(this).attr("pn"));
+         })  
+
+     var level={1:"国家",2:"省/直辖市",3:"市"};
+
+
+      function getareainfo(current){
+
+      $.ajax("http://192.168.1.18:8809/xm/webctl/web",
+      {
+      method:"get",
+      async:true,
+      data:{"current":current},
+      dataType:"json",
+      xhrFields: {"withCredentials": true},//为跨域操作 保持 session稳定一致)
+      success(result){
+       console.log(result.pages);
+           console.log(result.current);
+       $("#div2 button:last").attr("pn",result.pages);
+       $("[previous]").attr("pn", result.current-1<1?1:result.current-1);
+       $("[next]").attr("pn", result.current+1>result.pages?result.pages:result.current+1);
+        
+           $("#sp button").remove();
+           for(var a=1;a<=result.pages;a++){
+           if(a==result.current){
+             $("#sp").append("<button class='btn btn-primary disabled' pn='"+a+"'>"+a+"</button>");
+           }else{
+             $("#sp").append("<button class='btn btn-link' pn='"+a+"'>"+a+"</button>");
+           }
+           $("#sp button:last").click(function(){
+                 getareainfo($(this).attr("pn"));
+                //a穿进去的为什么是7
+                 
+           })
+           }
+          
+          
+   
+          var dts="";
+          $("#tb1 tbody tr").remove();
+          for(var i in result.areas){
+            var area=result.areas[i];
+            dts+="<tr>"
+            dts+="<td>"+area.aid+"</td>"
+            dts+="<td>"+area.aname+"</td>"
+            dts+="<td>"+level[area.alevel]+"</td>"
+            dts+="<td>"+(area.aparentid==null?"":area.aparentid)+"</td>"
+            dts+="<td><button class='btn btn-primary btn-sm'>del</button></td>"
+            dts+="</tr>"
+          }
+          $("#tb1 tbody").append(dts);
+      }
+      
+      })
+
+     }
+	})
+
+</script>
+</html>

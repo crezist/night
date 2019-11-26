@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ajax1.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta charset="UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<script type="text/javascript" src="/xm/sysjs/jquery.js"></script>
+</head>
+
+<body>
+	This is my HTML pag.
+	<br>
+	<button id="bt1">get方法请求</button>
+	<button id="bt2">post方法请求</button>
+
+
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+
+
+</body>
+
+
+<script type="text/javascript">
+	$("").ready(function() {
+
+		$("#bt1").click(function() {
+			var para1 = {
+				aid : 79,
+				aname : "nine",
+				alevel : 2,
+				aparentid : 1
+			};
+			$.get("/xm/ajaxjqctl/ajax", para1, function(result) {
+				console.log(result[0].name);
+			},"json")
+
+		})
+		
+
+		
+		
+		
+		
+		
+
+	})
+	
+	
+	
+	
+</script>
+</html>
