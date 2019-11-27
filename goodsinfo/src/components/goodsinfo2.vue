@@ -3,11 +3,11 @@
 		margin-top: 20px;
 		width: 1200px;
 		background-color: #F5F5F5;
-		
+
 	}
-	
+
 	.box{
-		column-count:4; 
+		column-count:4;
 		column-gap:14px;
 	}
    .picture{
@@ -40,7 +40,7 @@
    	margin-right: 10px;
    	background-color: #122B40;
    }
-   
+
    .picture:hover .goodsinfo{
    	display: block;
    	background-color: rgba(50,50,50,0.6);
@@ -52,9 +52,9 @@
    	font-size: 20px;
    	color:#456389234;
    	margin: 10px,auto;
-   	
+
    }
-   
+
 </style>
 
 <template>
@@ -62,19 +62,18 @@
 	<div class="box">
 	<div  v-for="(good,i) in goods" class="picture" :class="{pic1:(i%3==0||i%7==0)}"  :style="good.sty">
 		<div class="goodsinfo" @click="todetail(good.gdid)">
-		<button> <i class="fa fa-thumbs-o-up"></i></button>	
+		<button> <i class="fa fa-thumbs-o-up"></i></button>
 		<br /><br /><br />
-		<button> <i class="fa fa-star-o"></i></button>
+		<button @click.stop="getlist(good.gdid)"  > <i class="fa fa-star-o" ></i></button>
 		<br /><br /><br />
 		<hr style="width: 90%;margin:auto;border:0px;border-bottom:1px solid gray;" />
 		<br /><br />
 		{{good.gdname}}
 		</div>
-		
 	</div>
 	</div>
     <div class="buttom">{{tex}}</div>
-    
+
 	</div>
 </template>
 
@@ -87,9 +86,86 @@
 				num:1,
 				lock:false,
 				tex:"",
+        userid:0,
+
 			}
 		},
 		methods:{
+      getlist(gdid){
+          if(this.userid!=0){
+            this.selectcollction(gdid);
+          }else{
+            this.useronline();
+          }
+      },
+      selectcollction(gdid,userid){
+        var ob=this;
+        var url="http://127.0.0.1:8809/xm/Ajax_LidongxuController/selectGoodscollection"
+        $.ajax(url,{
+        	data:{"gdid":gdid,"userid":ob.userid},
+        	dataType:"json",
+        	xhrFields:{"withCredentials":true},
+        	success(result){
+                if(result){
+                  ob.insertkeys(gdid);
+                }else{
+                  if(window.confirm("您确定删除这个收藏么？")){
+                    ob.delectgoodskey(gdid);
+                  }
+
+                }
+        	}
+        	}
+          )
+      },
+      delectgoodskey(gdid,userid){
+        var ob=this;
+      	var url="http://127.0.0.1:8809/xm/Ajax_LidongxuController/delectgoodskey"
+      	$.ajax(url,{
+      		data:{"gdid":gdid,"userid":ob.userid},
+      		dataType:"json",
+      		xhrFields:{"withCredentials":true},
+      		success(result){
+             if(result){
+                  alert("您的操作成功");
+             }
+      		}
+      		}
+          )
+      },
+      useronline(){
+        var ob=this;
+      	var url="http://127.0.0.1:8809/xm/Goodsinfoctl/useronline"
+      	$.ajax(url,{
+      		dataType:"json",
+      		xhrFields:{"withCredentials":true},
+      		success(result){
+             if(result!=null){
+                    ob.userid=result.userid;
+             }else{
+               if(window.confirm("请先登录好么！")){
+                 this.$router.push({"name":"loginin"});
+             }
+      		}
+          }
+      		})
+      },
+
+      insertkeys(gdid,userid){
+        var ob=this;
+				var url="http://127.0.0.1:8809/xm/Ajax_LidongxuController/insertgoodskey"
+				$.ajax(url,{
+					data:{"gdid":gdid,"userid":ob.userid},
+					dataType:"json",
+					xhrFields:{"withCredentials":true},
+					success(result){
+             if(result){
+                  alert("添加成功");
+             }
+					}
+					}
+          )
+      },
 			todetail(gdid){
 				this.$router.push({
 					name:"detail",
@@ -116,32 +192,33 @@
 					}
 					}
 				)
-				
-		}
+		},
+    getpu(){
+      var ob=this;
+      	this.getgoodsinfo(1);
+      	$(window).scroll(function(){
+      		if(window.scrollY+window.outerHeight>=document.body.scrollHeight){
+      			if(!ob.lock){
+      				ob.lock=true;
+      				if(ob.num>ob.pages){
+      				ob.tex="到底了";
+      			}else{
+      				ob.getgoodsinfo(++ob.num);
+      				ob.lock=false;
+      			}
+      			}
+      		}
+      })
+    },
+
+
 
 		},
-		mounted:function(){
-			 var ob=this;
-			this.getgoodsinfo(1);
-			$(window).scroll(function(){
-				if(window.scrollY+window.outerHeight>=document.body.scrollHeight){
-					if(!ob.lock){
-						ob.lock=true;
-						if(ob.num>ob.pages){
-						ob.tex="到底了";
-					}else{
-						ob.getgoodsinfo(++ob.num);
-						ob.lock=false;
-					}
-					}
-					
-				}
-				
-						
-				
-		})  
+mounted:function(){
+this.getpu();
+this.useronline();
+
 		},
-		
+
 	}
 </script>
-

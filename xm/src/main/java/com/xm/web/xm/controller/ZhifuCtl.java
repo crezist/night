@@ -25,7 +25,7 @@ public class ZhifuCtl {
 	@RequestMapping("/paydone")
 	public String paydone(HttpServletRequest request){
 	   service.paydone(request.getParameter("out_trade_no"));
-	   return "redirect:http://192.168.1.29:8088";	
+	   return "redirect:http://127.0.0.1:8088";	
 	}
 
 }

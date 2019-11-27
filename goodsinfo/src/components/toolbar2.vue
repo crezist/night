@@ -19,7 +19,7 @@
 					<i class="fa fa-comment-o fa-2x"></i><br />消息
 				</div>
 				<div class="rightsub">
-				<i class="fa fa-star-o  fa-2x"></i><br />收藏
+				<i class="fa fa-star-o  fa-2x" @click="tall()"></i><br />收藏
 				</div>
 				<div class="rightsub" @click="browsercart()">
 				<i class="fa fa-shopping-cart  fa-2x"></i><br />购物车
@@ -138,7 +138,20 @@
 
 				}
 			});
+<<<<<<< HEAD
 			}
+=======
+			},
+      tall(){
+        if(this.user==null){
+          if(window.confirm("请登录后再操作")){
+            this.$router.push({"name":"loginin"});
+          }
+        }else{
+          this.$router.push({"name":"goodscollection",query:{"userid":this.user.userid}});
+        }
+      },
+>>>>>>> 928cfc6090bd0e3f3b402294d4bd27b5b0111eee
 
 		},
 		mounted(){
@@ -156,6 +169,10 @@
 				   ob.style1={position:"fixed",top:"0px",boxShadow:"0px 6px 6px #FFFFFF"}
 				}else{
 				   ob.style1={position:"relative"}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 928cfc6090bd0e3f3b402294d4bd27b5b0111eee
 				}
 			})
 		}
@@ -171,15 +188,22 @@
 	.toolbar2 .left{
 		float:left;
 		margin-left:60px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 928cfc6090bd0e3f3b402294d4bd27b5b0111eee
 	}
 	.toolbar2 .right{
     width:330px;
     height: 100px;
 		text-align:left;
 		line-height: 100px;
+<<<<<<< HEAD
     float: right;
 		position: relative;
     left: 30%;
+=======
+>>>>>>> 928cfc6090bd0e3f3b402294d4bd27b5b0111eee
 
 	}
 	.toolbar2 .right div{

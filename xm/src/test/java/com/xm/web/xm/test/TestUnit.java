@@ -29,6 +29,7 @@ import com.xm.web.xm.pojo.Goodsinfo;
 import com.xm.web.xm.pojo.Orderlist;
 import com.xm.web.xm.pojo.User;
 import com.xm.web.xm.services.GoodsinfoService;
+import com.xm.web.xm.services.LiDongxuService;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -40,6 +41,7 @@ public class TestUnit {
 	@Autowired
 	App_OrderMapper  ordermapper;
 	@Autowired
+<<<<<<< HEAD
 	GoodsinfoandimgMapper goodsinfoandimgMapper;
 	
 	
@@ -50,6 +52,15 @@ public class TestUnit {
 		List<Map> list=goodsinfoandimgMapper.selectgoodsbystore(1,0,20);
 		for (Map orderlist : list) {
 			System.out.println(orderlist.get("gdname")+":"+orderlist.get("gdia"));
+=======
+	LiDongxuService lidongxuService;
+	
+	@Test
+	public void test3(){
+		List<Map> tt=lidongxuService.selectAllcollection(1);
+		for (int i = 0; i < tt.size(); i++) {
+			System.out.println(tt.get(i));
+>>>>>>> 928cfc6090bd0e3f3b402294d4bd27b5b0111eee
 		}
 	}
 	
