@@ -15,11 +15,11 @@
 		   		<div style="float: left;">
 		   			价格：
 		   		</div  style="float: left;">
-		   		
+
 		   		<div style="float: left;font-size:40px;color: red;">
 		   			￥{{price}}
 		   		</div>
-		   		
+
 		   	</div>
 		   	<div class="record">
 		   		<div  style="float: left;margin-top: 20px;">
@@ -50,24 +50,24 @@
 		   		<div class="zhifubao"></div>
 		   		<div class="wechat"></div>
 		   	</div>
-		   	
+
 		   </div>
 		  </div>
 		</div>
         <righttoolbar></righttoolbar>
         <blank></blank>
 	</div>
-	
+
 </template>
 
 <script>
 	import toolbar2 from "@/components/toolbar2"
 	import toolbar1 from "@/components/toolbar1"
 	import righttoolbar from "@/components/righttoolbar"
-    import blank from "@/components/blank" 
+    import blank from "@/components/blank"
 
 	export default{
-		
+
 		components:{toolbar1,toolbar2,righttoolbar,blank,},
 		data(){
 			return{
@@ -98,7 +98,8 @@
 					return;
 				}
 				var ob=this;
-				var url="http://:8809/xm/Goodsinfoctl/tocart"
+
+				var url="http://127.0.0.1:8809/xm/Goodsinfoctl/tocart"
 				$.ajax(url,{
 					data:{gdid:ob.gdid,gdcount:ob.count,gsid:ob.gsid},
 					dataType:"json",
@@ -108,20 +109,20 @@
 						ob.tocartdisplay=true;
 						ob.block=true;
 						window.setTimeout(function(){
-						ob.tocartdisplay=false;	
+						ob.tocartdisplay=false;
 						ob.block=false;
 						},500);
-						
+
 						}else{
-						ob.tocartdisplay=false;		
+						ob.tocartdisplay=false;
 						}
 					}
 					}
-				)	
+				)
 			},
 			online(){
 				var ob=this;
-			    var url="http://:8809/xm/Goodsinfoctl/useronline";
+			    var url="http://127.0.0.1:8809/xm/Goodsinfoctl/useronline";
 			    $.ajax(url,{
 			    async:false,
 			    resultType:"json",
@@ -141,10 +142,10 @@
 					this.count=1;
 				}
 			},
-			
+
 			getallsize(){
 				var ob=this;
-				var url="http://:8809/xm/Goodsinfoctl/getallsize"
+				var url="http://127.0.0.1:8809/xm/Goodsinfoctl/getallsize"
 				$.ajax(url,{
 					dataType:"json",
 					xhrFields:{"withCredentials":true},
@@ -156,27 +157,28 @@
 			},
 			getdetail(){
 				var ob=this;
-				var url="http://:8809/xm/Goodsinfoctl/getdetails"
+
+				var url="http://127.0.0.1:8809/xm/Goodsinfoctl/getdetails"
 				$.ajax(url,{
 					data:{gdid:ob.gdid},
 					dataType:"json",
 					xhrFields:{"withCredentials":true},
 					success(result){
-						ob.imgurl="http://:8809/xm/tp/"+result.gimgurl;
+						ob.imgurl="http://127.0.0.1:8809/xm/tp/"+result.gimgurl;
 						ob.gdname=result.gdname;
 						ob.price=result.price;
 					}
 					}
 				)
 			}
-			
+
 		},
 		mounted(){
 			this.gdid=this.$route.query.gdid;
 			this.getdetail();
 			this.getallsize();
 		}
-		
+
 	}
 </script>
 
@@ -185,7 +187,7 @@
 	float:left;
 	width: 970px;
 	min-height:600px ;
-	
+
 }
 .info_box{
 	width: 1000px;
@@ -204,14 +206,14 @@
 .info{
 	width:600px;
 	float: left;
-	
+
 }
 .info>div{
 	width: 80%;
 	height: 100px;
 	margin:auto;
 	text-align: left;
-	
+
 }
 .info .name{
 	font-size: 30px;
@@ -234,11 +236,11 @@
 	box-shadow: 0px 0px 1px 1px #999999;
 }
 .info .record .size:hover{
-    box-shadow: 0px 0px 0px 2px #262626;	
+    box-shadow: 0px 0px 0px 2px #262626;
 }
 .info .record .size_selected{
     background-color: greenyellow;
-    color: white;	
+    color: white;
 }
 .minus_plus{
 	width:104px;
@@ -289,10 +291,10 @@
 	position: absolute;
 	top:-20px;
 	left:300px;
-	
+
 }
 .pay{
-	
+
 }
 .pay .zhi{
 	float: left;
@@ -314,8 +316,8 @@
 	float: left;
 }
 .note{
-	
-	
+
+
 }
 .note .speak{
 	padding-bottom: 70px;
@@ -327,12 +329,12 @@
 	height: 30px;
 	margin-left: 6px;
 	float: left;
-	
+
 }
 .note .say i{
 	vertical-align:bottom;
     color:red;
-    
+
 }
-	
+
 </style>

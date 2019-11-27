@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xm.web.xm.mapper.GoodsinfoandimgMapper">
+  <select id="selectgoodsbystore" resultType="map">
+  SELECT goods.gdid,goods.gdname,img.gimgurl FROM  goodsinfo goods 
+				JOIN goodsimage img ON goods.gdid=img.gdid
+			WHERE img.gimgtype=1 AND goods.stid=#{stid}  LIMIT #{begin},#{last}
+  </select> 
+</mapper>

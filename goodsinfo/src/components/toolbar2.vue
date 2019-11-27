@@ -1,7 +1,7 @@
 <template>
 	<transition name="slide-fade">
 		<div class="toolbar2" :style="style1" v-if="toolbar2">
-			<input v-model="abc" style="background-color: darkgoldenrod;">
+			<!-- <input v-model="abc" style="background-color: darkgoldenrod;"> -->
 		{{abc}}
 			<div class="left">
 			<img width="90px" height="90px" src="../../static/imgs/timg.jpg" style="margin-right:30px;margin-top: 5px;" />
@@ -70,25 +70,25 @@
 					if(this.user==null){
 						this.$router.push({name:"loginin"});
 					}else{
-					this.$router.push({name:"cart"});	
+					this.$router.push({name:"cart"});
 					}
-					
+
 				},
 				exit(){
 				var ob=this;
-			    var url="http://:8809/xm/Goodsinfoctl/logout";
+		    var url="http://127.0.0.1:8809/xm/Goodsinfoctl/logout";
 			    $.ajax(url,{
 			    xhrFields:{"withCredentials":true},
 				success(result){
 				    ob.user=null;
 					ob.logdisplay=true;
-				
+
 				}
-			})	
+			})
 				},
 				online(){
 				var ob=this;
-			    var url="http://:8809/xm/Goodsinfoctl/useronline";
+			    var url="http://127.0.0.1:8809/xm/Goodsinfoctl/useronline";
 			    $.ajax(url,{
 			    resultType:"json",
 			    xhrFields:{"withCredentials":true},
@@ -112,7 +112,7 @@
 			searchex(ke){
 				this.show+=ke;
 				if(this.show==this.goods.length){
-					this.show=0;	
+					this.show=0;
 				}
 				if(this.show<0){
 					this.show=this.goods.length-1;
@@ -128,16 +128,16 @@
 					return;
 				}
 			var ob=this;
-			var url="http://:8809/xm/Goodsinfoctl/like";
+			var url="http://127.0.0.1:8809/xm/Goodsinfoctl/like";
 			$.ajax(url,{
 			    data:{keyword:ob.keyword},
 			    resultType:"json",
 			    xhrFields:{"withCredentials":true},
 				success(result){
 					ob.goods=result;
-					
+
 				}
-			});	
+			});
 			}
 
 		},
@@ -156,7 +156,6 @@
 				   ob.style1={position:"fixed",top:"0px",boxShadow:"0px 6px 6px #FFFFFF"}
 				}else{
 				   ob.style1={position:"relative"}
-					
 				}
 			})
 		}
@@ -172,14 +171,16 @@
 	.toolbar2 .left{
 		float:left;
 		margin-left:60px;
-		
 	}
 	.toolbar2 .right{
-		float: right;
-		width:330px;
+    width:330px;
+    height: 100px;
 		text-align:left;
 		line-height: 100px;
-		
+    float: right;
+		position: relative;
+    left: 30%;
+
 	}
 	.toolbar2 .right div{
 		float: left;
@@ -188,7 +189,7 @@
 		margin-top: 30px;
 		text-align: center;
 		margin-right: 10px;
-		font-size: 12px;		
+		font-size: 12px;
 	}
 	.toolbar2 .right div i{
 		color: #FF99CC;
@@ -203,7 +204,7 @@
 		margin: 0px;
 		padding: 0px;
 		border: 0px;
-		
+
 	}
 	.input{
 		margin:0px;
@@ -214,7 +215,7 @@
 		background-color:transparent;
 		outline: none;
 		font-size:20px;
-		color: #FFFFF6;	
+		color: #FFFFF6;
 	}
 	.butt{
 		height: 100%;
@@ -222,8 +223,8 @@
 		padding: 0px;
 		width: 54px;
 		background-color:#FF99CC;
-		border:0px;	
-		
+		border:0px;
+
 	}
 	.list{
 		margin-top: -4px;
@@ -252,6 +253,6 @@
 		height: 40px;
 	}
 
-	
+
 
 </style>

@@ -24,6 +24,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.xm.web.xm.controller.GoodsinfoCtl;
 import com.xm.web.xm.mapper.App_OrderMapper;
+import com.xm.web.xm.mapper.GoodsinfoandimgMapper;
 import com.xm.web.xm.pojo.Goodsinfo;
 import com.xm.web.xm.pojo.Orderlist;
 import com.xm.web.xm.pojo.User;
@@ -38,15 +39,17 @@ public class TestUnit {
 	
 	@Autowired
 	App_OrderMapper  ordermapper;
+	@Autowired
+	GoodsinfoandimgMapper goodsinfoandimgMapper;
 	
 	
 	@Test
 	public void test3(){
-		List<Integer> arr=new ArrayList<Integer>();
-		Collections.addAll(arr,1,5);
-		List<Orderlist> list=ordermapper.makeOrder(arr);
-		for (Orderlist orderlist : list) {
-			System.out.println(orderlist);
+		/*List<Integer> arr=new ArrayList<Integer>();
+		Collections.addAll(arr,1,5);*/
+		List<Map> list=goodsinfoandimgMapper.selectgoodsbystore(1,0,20);
+		for (Map orderlist : list) {
+			System.out.println(orderlist.get("gdname")+":"+orderlist.get("gdia"));
 		}
 	}
 	

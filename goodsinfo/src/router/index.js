@@ -7,7 +7,8 @@ import loginin from '@/components/loginin'
 import cart from '@/components/cart'
 import makeorder from '@/components/makeorder'
 import order from '@/components/order'
-
+import myshop from '@/components/myshop'
+import toinsertstoreuser from '@/components/toinsertstoreuser'
 Vue.use(Router)
 
 export default new Router({
@@ -47,5 +48,15 @@ export default new Router({
       name: 'order',
       component:order
     },
+    {
+       path: '/toinsertstoreuser',
+       name: 'toinsertstoreuser',
+       component: toinsertstoreuser
+     },
+     {
+        path: '/myshop',
+        name: 'myshop',
+        component: myshop
+      },
   ]
 })

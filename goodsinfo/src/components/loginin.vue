@@ -13,7 +13,7 @@
 			<input type="text" v-model="vaildcode"  />
 			<span class="str text-danger">{{vaildcodeerror}}</span>
 		</div>		
-		<img id="yanzheng" @click="changeimage()" src="http://:8809/xm/vaildCode" ></src>
+		<img id="yanzheng" @click="changeimage()" src="http://127.0.0.1:8809/xm/vaildCode" ></src>
 		<button class="btn btn-class" @click="submit()">确认</button>
 	</div>
 	
@@ -36,7 +36,8 @@
 				this.vaild();
 				if(this.vaildcodeerror==""){
 				var ob=this;
-				var url="http://:8809/xm/Goodsinfoctl/login"
+
+				var url="http://127.0.0.1:8809/xm/Goodsinfoctl/login"
 				$.ajax(url,{
 					data:{logname:ob.name,password:ob.password_one},
 					xhrFields:{"withCredentials":true},
@@ -62,7 +63,7 @@
 			},
 			vaild(){
 				var ob=this;
-				var url="http://:8809/xm/vaildCodeisok"
+				var url="http://127.0.0.1:8809/xm/vaildCodeisok"
 				$.ajax(url,{
 					data:{vaild:ob.vaildcode},
 					xhrFields:{"withCredentials":true},
@@ -79,7 +80,7 @@
 				)
 			},
 			changeimage(){
-				$("#yanzheng")[0].src="http://:8809/xm/vaildCode";
+				$("#yanzheng")[0].src="http://127.0.0.1:8809/xm/vaildCode";
 			},
 			my(){
 				console.log(this.$route.query.reg); 

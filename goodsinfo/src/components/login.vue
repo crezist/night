@@ -18,8 +18,9 @@
 			<span  class="stl">验证码:</span>
 			<input type="text" v-model="vaildcode"  />
 			<span class="str text-danger">{{vaildcodeerror}}</span>
-		</div>		
-		<img id="yanzheng" @click="changeimage($event)" src="http://:8809/xm/vaildCode" ></src>
+		</div>
+
+		<img id="yanzheng" @click="changeimage($event)" src="http://127.0.0.1:8809/xm/vaildCode" ></src>
 		<button class="btn btn-class" @click="submit()">确认</button>
 	</div>
 </template>
@@ -40,20 +41,20 @@
 			}
 		},
 		methods:{
-			
-			
+
+
 			submit(){
 				if(this.submitready()){
 					console.log(1);
 				var ob=this;
-				var url="http://:8809/xm/Goodsinfoctl/register"
+				var url="http://127.0.0.1:8809/xm/Goodsinfoctl/register"
 				$.ajax(url,{
 					data:{logname:ob.name,password:ob.password_one},
 					xhrFields:{"withCredentials":true},
 					success(result){
 				      if(result){
 				       	if($(window)[0].confirm("直接登录吗？")){
-				       	    ob.$router.push({name:"loginin",query:{reg:"reg"}});	
+				       	    ob.$router.push({name:"loginin",query:{reg:"reg"}});
 				       	}else{
 				       		ob.$router.back(-1);
 				       	}
@@ -66,7 +67,7 @@
 				}else{
 					console.log(2);
 				}},
-			
+
 			submitready(){
 				if(this.name==""){
 					this.nameok="名字输入为空"
@@ -97,7 +98,7 @@
 			vaild(){
 				var kk=false;
 				var ob=this;
-				var url="http://:8809/xm/vaildCodeisok"
+				var url="http://127.0.0.1:8809/xm/vaildCodeisok"
 				$.ajax(url,{
 					data:{vaild:ob.vaildcode},
 					xhrFields:{"withCredentials":true},
@@ -109,7 +110,7 @@
 						kk=true;
 						}else{
 						ob.vaildcodeerror="验证码错误";
-						$("#yanzheng")[0].src="http://:8809/xm/vaildCode";
+						$("#yanzheng")[0].src="http://127.0.0.1:8809/xm/vaildCode";
 						kk=false;
 						}
 					}
@@ -130,7 +131,7 @@
 					this.passworderror="密码不一致";
 					this.passwordok=false;
 				}
-				
+
 			},
 			passwordissame(){
 				if(this.passworderror=="密码不足6位"){
@@ -145,12 +146,12 @@
 			},
 			nameisok(){
 				var ob=this;
-				var url="http://:8809/xm/Goodsinfoctl/lognameisok"
+				var url="http://127.0.0.1:8809/xm/Goodsinfoctl/lognameisok"
 				$.ajax(url,{
 					data:{logname:ob.name},
 					xhrFields:{"withCredentials":true},
 					success(result){
-						
+
 						if(result){
 						ob.nameok="可以使用";
 						ob.namecolor=true;
@@ -158,13 +159,13 @@
 						ob.nameok="被占用";
 						ob.namecolor=false;
 						}
-						
+
 					}
 					}
 				)
 			},
 			changeimage(event){
-				event.target.src="http://:8809/xm/vaildCode";
+				event.target.src="http://127.0.0.1:8809/xm/vaildCode";
 			},
 		}
 	}
@@ -184,7 +185,7 @@
 		width: 400px;
 		height: 40px;
 		line-height: 40px;
-		margin-top:10px;    
+		margin-top:10px;
 	}
 	.register div .stl{
 		width: 90px;
@@ -203,8 +204,8 @@
 	.register > div input{
 		margin: auto;
 		width: 190px;
-		height: 40px;  
+		height: 40px;
 	}
-	
-	
+
+
 </style>

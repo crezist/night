@@ -13,6 +13,7 @@ import com.xm.web.xm.pojo.AreainfoExample;
 import com.xm.web.xm.pojo.Storeinfo;
 import com.xm.web.xm.pojo.StoreinfoExample;
 import com.xm.web.xm.pojo.Storeuser;
+import com.xm.web.xm.pojo.StoreuserExample;
 @Service
 public class Storservice {
 	@Autowired
@@ -36,7 +37,7 @@ public class Storservice {
 	 * @param storeinfo
 	 */
 	@Transactional
-	public void insertuserbystor(int userid,Storeinfo storeinfo){
+	public int insertuserbystor(int userid,Storeinfo storeinfo){
 	
 		storeinfoMapper.insert(storeinfo);
 		StoreinfoExample example=new StoreinfoExample();
@@ -45,6 +46,17 @@ public class Storservice {
 		Storeuser record=new Storeuser();
 		record.setUserid(userid);
 		record.setStid(sto.getStid());
-		storeuserMapper.insert(record);
+		storeuserMapper.insertSelective(record);
+		return  sto.getStid();
+	}
+	/**
+	 * 查询用户是否是商户
+	 * @param userid
+	 * @return
+	 */
+	public Storeuser selectstoreuserishave(int userid){
+		StoreuserExample example=new StoreuserExample();
+		example.createCriteria().andUseridEqualTo(userid);
+		return storeuserMapper.selectByExample(example).get(0);
 	}
 }

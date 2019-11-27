@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.xm.web.xm.pojo.Goodsinfo;
 import com.xm.web.xm.services.StoreinfoService;
 
 @RestController
@@ -13,8 +14,14 @@ import com.xm.web.xm.services.StoreinfoService;
 public class StoreinfoController {
 	@Autowired
 	StoreinfoService storeinfoService;
-	
-	public List<Map> selectgoodsbystore(int stid){
-		return storeinfoService.selectallgoodsofstore(stid);
+	/**
+	 * 分页查询店铺商品
+	 * @param stid
+	 * @param pagenum
+	 * @return
+	 */
+	@RequestMapping("selectgoodsbystore")
+	public List<Goodsinfo> selectgoodsbystore(int stid,int pagenums){
+		return storeinfoService.selectallgoodsofstore(stid,pagenums);
 	}
 }
