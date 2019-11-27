@@ -138,7 +138,6 @@
 
 				}
 			});
-			}
 			},
       tall(){
         if(this.user==null){
@@ -149,6 +148,10 @@
           this.$router.push({"name":"goodscollection",query:{"userid":this.user.userid}});
         }
       },
+			},
+      
+
+      
 		mounted(){
 			this.online();
 			var ob=this;
