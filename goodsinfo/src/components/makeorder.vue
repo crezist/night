@@ -23,7 +23,7 @@
 		methods:{
 			makeorder(){
 			    var ob=this;
-				var url="http://192.168.1.29:8809/xm/Goodsinfoctl/makeorder"
+				var url="http://:8809/xm/Goodsinfoctl/makeorder"
 				$.ajax(url,{
 					data:{address:ob.address,recipient:ob.recipient,contactnumber:ob.contactnumber,ctids:ob.ctids},
 					traditional:true,

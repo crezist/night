@@ -92,7 +92,7 @@
 			},
 			changecount(ctid,gdcount,index){
 				var ob=this;
-				var url="http://192.168.1.29:8809/xm/Goodsinfoctl/changecount"
+				var url="http://:8809/xm/Goodsinfoctl/changecount"
 				$.ajax(url,{
 					data:{ctid:ctid,gdcount:gdcount},
 					dataType:"text",
@@ -121,7 +121,7 @@
 			},
 			getcart(){
 				var ob=this;
-				var url="http://192.168.1.29:8809/xm/Goodsinfoctl/browsercart"
+				var url="http://:8809/xm/Goodsinfoctl/browsercart"
 				$.ajax(url,{
 					dataType:"json",
 					xhrFields:{"withCredentials":true},
@@ -129,7 +129,7 @@
 						if(result){
 						  
 						   for(var i in result){
-						   	result[i].backurl={"background-image":"url('http://192.168.1.29:8809/xm/tp/"+result[i].gimgurl+"')"}
+						   	result[i].backurl={"background-image":"url('http://:8809/xm/tp/"+result[i].gimgurl+"')"}
 						   }
 						  ob.cartlist=result;
 					  }		

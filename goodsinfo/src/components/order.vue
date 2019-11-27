@@ -46,13 +46,13 @@
 		methods:{
 			getorder(){
 				var ob=this;
-				var url="http://192.168.1.29:8809/xm/Goodsinfoctl/getorderdetails"
+				var url="http://:8809/xm/Goodsinfoctl/getorderdetails"
 				$.ajax(url,{
 					dataType:"json",
 					xhrFields:{"withCredentials":true},
 					success(result){
 						for(var i in result){
-							result[i].back={"background-image":"url('http://192.168.1.29:8809/xm/tp/"+result[i].gimgurl+"')"};
+							result[i].back={"background-image":"url('http://:8809/xm/tp/"+result[i].gimgurl+"')"};
 						}
 						
 						
@@ -77,7 +77,7 @@
 				)
 			},
 			topay(ofid){
-				window.open("http://192.168.1.29:8809/xm/ali?ofid="+ofid)
+				window.open("http://:8809/xm/ali?ofid="+ofid)
 			},
 				
 		},

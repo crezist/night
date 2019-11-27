@@ -98,7 +98,7 @@
 			},
 			getgoodsinfo(current){
 				var ob=this;
-				var url="http://192.168.1.29:8809/xm/Goodsinfoctl/goods"
+				var url="http://:8809/xm/Goodsinfoctl/goods"
 				$.ajax(url,{
 					data:{current:current},
 					dataType:"json",
@@ -109,7 +109,7 @@
 						for(var i in ob.goods){
 							var good=ob.goods[i];
 							good.sty={
-								"background-image":"url('http://192.168.1.29:8809/xm/tp/"+ob.goods[i].gimgurl+"')",
+								"background-image":"url('http://:8809/xm/tp/"+ob.goods[i].gimgurl+"')",
 							}
 						}
 					}

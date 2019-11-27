@@ -19,7 +19,7 @@
 			<input type="text" v-model="vaildcode"  />
 			<span class="str text-danger">{{vaildcodeerror}}</span>
 		</div>		
-		<img id="yanzheng" @click="changeimage($event)" src="http://192.168.1.29:8809/xm/vaildCode" ></src>
+		<img id="yanzheng" @click="changeimage($event)" src="http://:8809/xm/vaildCode" ></src>
 		<button class="btn btn-class" @click="submit()">确认</button>
 	</div>
 </template>
@@ -46,7 +46,7 @@
 				if(this.submitready()){
 					console.log(1);
 				var ob=this;
-				var url="http://192.168.1.29:8809/xm/Goodsinfoctl/register"
+				var url="http://:8809/xm/Goodsinfoctl/register"
 				$.ajax(url,{
 					data:{logname:ob.name,password:ob.password_one},
 					xhrFields:{"withCredentials":true},
@@ -97,7 +97,7 @@
 			vaild(){
 				var kk=false;
 				var ob=this;
-				var url="http://192.168.1.29:8809/xm/vaildCodeisok"
+				var url="http://:8809/xm/vaildCodeisok"
 				$.ajax(url,{
 					data:{vaild:ob.vaildcode},
 					xhrFields:{"withCredentials":true},
@@ -109,7 +109,7 @@
 						kk=true;
 						}else{
 						ob.vaildcodeerror="验证码错误";
-						$("#yanzheng")[0].src="http://192.168.1.29:8809/xm/vaildCode";
+						$("#yanzheng")[0].src="http://:8809/xm/vaildCode";
 						kk=false;
 						}
 					}
@@ -145,7 +145,7 @@
 			},
 			nameisok(){
 				var ob=this;
-				var url="http://192.168.1.29:8809/xm/Goodsinfoctl/lognameisok"
+				var url="http://:8809/xm/Goodsinfoctl/lognameisok"
 				$.ajax(url,{
 					data:{logname:ob.name},
 					xhrFields:{"withCredentials":true},
@@ -164,7 +164,7 @@
 				)
 			},
 			changeimage(event){
-				event.target.src="http://192.168.1.29:8809/xm/vaildCode";
+				event.target.src="http://:8809/xm/vaildCode";
 			},
 		}
 	}
