@@ -40,7 +40,7 @@
 				orderlist:"",
 				ja:{},
 				tem:"",
-				count:"",
+				count:""
 			}
 		},
 		methods:{
