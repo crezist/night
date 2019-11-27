@@ -13,21 +13,21 @@
 		<td>操作</td>
 		</tr>
 
-		<tr v-for="(order,index) in orderlist" >	
+		<tr v-for="(order,index) in orderlist" >
 		<td :rowspan="ja[order.ofid]" v-if="order.ofid!=null">{{order.ofid}}</td>
 		<td><div :style="order.back" class="ab"></div></td>
 		<td>{{order.gdname}}</td>
-		
+
 		<td>{{order.price}}</td>
 		<td>{{order.gdcount}}</td>
 		<td >{{order.gstext}}</td>
 		<td >{{order.ofdate}}</td>
 		<td>{{order.ofstate}}</td>
-		
+
 		<td>
 			<button @click="topay(order.ofid)">结算</button>
 		</td>
-		
+
 		</tr>
 		</table>
 	</div>
@@ -40,7 +40,7 @@
 				orderlist:"",
 				ja:{},
 				tem:"",
-				count:""
+				count:"",
 			}
 		},
 		methods:{
@@ -54,16 +54,16 @@
 						for(var i in result){
 							result[i].back={"background-image":"url('http://127.0.0.1:8809/xm/tp/"+result[i].gimgurl+"')"};
 						}
-						
-						
-						
-						
+
+
+
+
 						for (var i in result) {
 							if(ob.tem!=result[i].ofid){
 								ob.tem=result[i].ofid;
 								ob.count=1;
 								ob.ja[result[i].ofid]=ob.count;
-								
+
 							}else{
 								ob.count+=1;
 								ob.ja[result[i].ofid]=ob.count;
@@ -79,7 +79,7 @@
 			topay(ofid){
 				window.open("http://127.0.0.1:8809/xm/ali?ofid="+ofid)
 			},
-				
+
 		},
 		mounted(){
 			this.getorder();
