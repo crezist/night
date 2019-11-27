@@ -28,6 +28,7 @@ import com.xm.web.xm.pojo.Goodsinfo;
 import com.xm.web.xm.pojo.Orderlist;
 import com.xm.web.xm.pojo.User;
 import com.xm.web.xm.services.GoodsinfoService;
+import com.xm.web.xm.services.LiDongxuService;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -38,15 +39,14 @@ public class TestUnit {
 	
 	@Autowired
 	App_OrderMapper  ordermapper;
-	
+	@Autowired
+	LiDongxuService lidongxuService;
 	
 	@Test
 	public void test3(){
-		List<Integer> arr=new ArrayList<Integer>();
-		Collections.addAll(arr,1,5);
-		List<Orderlist> list=ordermapper.makeOrder(arr);
-		for (Orderlist orderlist : list) {
-			System.out.println(orderlist);
+		List<Map> tt=lidongxuService.selectAllcollection(1);
+		for (int i = 0; i < tt.size(); i++) {
+			System.out.println(tt.get(i));
 		}
 	}
 	

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xm.web.xm.mapper.App_LiDongxuMapper">
+  <select id="getgoodscollection" resultType="map">
+SELECT coll.gdid,goods.gdname,img.gimgurl,sprice.price FROM goodscollection coll
+				  JOIN goodsinfo goods ON coll.gdid=goods.gdid
+				  JOIN goodsimage img ON coll.gdid=img.gdid
+				  JOIN goodsprice sprice ON coll.gdid=sprice.gdid
+				  WHERE userid=#{userid} AND img.gimgtype=1 AND utid=1
+  </select>
+</mapper>
