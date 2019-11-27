@@ -98,7 +98,7 @@
 					return;
 				}
 				var ob=this;
-				var url="http://192.168.1.29:8809/xm/Goodsinfoctl/tocart"
+				var url="http://127.0.0.1:8809/xm/Goodsinfoctl/tocart"
 				$.ajax(url,{
 					data:{gdid:ob.gdid,gdcount:ob.count,gsid:ob.gsid},
 					dataType:"json",
@@ -121,7 +121,7 @@
 			},
 			online(){
 				var ob=this;
-			    var url="http://192.168.1.29:8809/xm/Goodsinfoctl/useronline";
+			    var url="http://127.0.0.1:8809/xm/Goodsinfoctl/useronline";
 			    $.ajax(url,{
 			    async:false,
 			    resultType:"json",
@@ -144,7 +144,7 @@
 			
 			getallsize(){
 				var ob=this;
-				var url="http://192.168.1.29:8809/xm/Goodsinfoctl/getallsize"
+				var url="http://127.0.0.1:8809/xm/Goodsinfoctl/getallsize"
 				$.ajax(url,{
 					dataType:"json",
 					xhrFields:{"withCredentials":true},
@@ -156,13 +156,13 @@
 			},
 			getdetail(){
 				var ob=this;
-				var url="http://192.168.1.29:8809/xm/Goodsinfoctl/getdetails"
+				var url="http://127.0.0.1:8809/xm/Goodsinfoctl/getdetails"
 				$.ajax(url,{
 					data:{gdid:ob.gdid},
 					dataType:"json",
 					xhrFields:{"withCredentials":true},
 					success(result){
-						ob.imgurl="http://192.168.1.29:8809/xm/tp/"+result.gimgurl;
+						ob.imgurl="http://127.0.0.1:8809/xm/tp/"+result.gimgurl;
 						ob.gdname=result.gdname;
 						ob.price=result.price;
 					}

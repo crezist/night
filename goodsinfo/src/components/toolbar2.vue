@@ -76,7 +76,7 @@
 				},
 				exit(){
 				var ob=this;
-			    var url="http://192.168.1.29:8809/xm/Goodsinfoctl/logout";
+			    var url="http://127.0.0.1:8809/xm/Goodsinfoctl/logout";
 			    $.ajax(url,{
 			    xhrFields:{"withCredentials":true},
 				success(result){
@@ -88,7 +88,7 @@
 				},
 				online(){
 				var ob=this;
-			    var url="http://192.168.1.29:8809/xm/Goodsinfoctl/useronline";
+			    var url="http://127.0.0.1:8809/xm/Goodsinfoctl/useronline";
 			    $.ajax(url,{
 			    resultType:"json",
 			    xhrFields:{"withCredentials":true},
@@ -128,7 +128,7 @@
 					return;
 				}
 			var ob=this;
-			var url="http://192.168.1.29:8809/xm/Goodsinfoctl/like";
+			var url="http://127.0.0.1:8809/xm/Goodsinfoctl/like";
 			$.ajax(url,{
 			    data:{keyword:ob.keyword},
 			    resultType:"json",

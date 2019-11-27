@@ -31,7 +31,7 @@
 			},
 			online(){
 				var ob=this;
-			    var url="http://192.168.1.29:8809/xm/Goodsinfoctl/useronline";
+			    var url="http://127.0.0.1:8809/xm/Goodsinfoctl/useronline";
 			    $.ajax(url,{
 			    async:false,
 			    resultType:"json",

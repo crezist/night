@@ -4,7 +4,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/mgj
     username: root
-    password: 123456
+    password: 444444
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
      initial-size: 20
@@ -13,7 +13,7 @@ spring:
      max-wait: 60000
      time-between-eviction-runs-millis: 60000
   resources:
-    static-locations: classpath:/public,classpath:/static,file:D:/web1
+    static-locations: classpath:/public,classpath:/static,file:D:/tp
     
 server:
   port: 8809
