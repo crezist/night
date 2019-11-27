@@ -7,6 +7,8 @@ import loginin from '@/components/loginin'
 import cart from '@/components/cart'
 import makeorder from '@/components/makeorder'
 import order from '@/components/order'
+import goodscollection from '@/components/goodscollection'
+
 
 Vue.use(Router)
 
@@ -46,6 +48,11 @@ export default new Router({
       path: '/order',
       name: 'order',
       component:order
+    },
+    {
+      path: '/goodscollection',
+      name: 'goodscollection',
+      component:goodscollection
     },
   ]
 })

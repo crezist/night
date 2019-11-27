@@ -19,7 +19,7 @@
 					<i class="fa fa-comment-o fa-2x"></i><br />消息
 				</div>
 				<div class="rightsub">
-				<i class="fa fa-star-o  fa-2x"></i><br />收藏
+				<i class="fa fa-star-o  fa-2x" @click="tall()"></i><br />收藏
 				</div>
 				<div class="rightsub" @click="browsercart()">
 				<i class="fa fa-shopping-cart  fa-2x"></i><br />购物车
@@ -70,9 +70,9 @@
 					if(this.user==null){
 						this.$router.push({name:"loginin"});
 					}else{
-					this.$router.push({name:"cart"});	
+					this.$router.push({name:"cart"});
 					}
-					
+
 				},
 				exit(){
 				var ob=this;
@@ -82,9 +82,9 @@
 				success(result){
 				    ob.user=null;
 					ob.logdisplay=true;
-				
+
 				}
-			})	
+			})
 				},
 				online(){
 				var ob=this;
@@ -112,7 +112,7 @@
 			searchex(ke){
 				this.show+=ke;
 				if(this.show==this.goods.length){
-					this.show=0;	
+					this.show=0;
 				}
 				if(this.show<0){
 					this.show=this.goods.length-1;
@@ -135,10 +135,19 @@
 			    xhrFields:{"withCredentials":true},
 				success(result){
 					ob.goods=result;
-					
+
 				}
-			});	
-			}
+			});
+			},
+      tall(){
+        if(this.user==null){
+          if(window.confirm("请登录后再操作")){
+            this.$router.push({"name":"loginin"});
+          }
+        }else{
+          this.$router.push({"name":"goodscollection",query:{"userid":this.user.userid}});
+        }
+      },
 
 		},
 		mounted(){
@@ -156,7 +165,7 @@
 				   ob.style1={position:"fixed",top:"0px",boxShadow:"0px 6px 6px #FFFFFF"}
 				}else{
 				   ob.style1={position:"relative"}
-					
+
 				}
 			})
 		}
@@ -172,14 +181,14 @@
 	.toolbar2 .left{
 		float:left;
 		margin-left:60px;
-		
+
 	}
 	.toolbar2 .right{
 		float: right;
 		width:330px;
 		text-align:left;
 		line-height: 100px;
-		
+
 	}
 	.toolbar2 .right div{
 		float: left;
@@ -188,7 +197,7 @@
 		margin-top: 30px;
 		text-align: center;
 		margin-right: 10px;
-		font-size: 12px;		
+		font-size: 12px;
 	}
 	.toolbar2 .right div i{
 		color: #FF99CC;
@@ -203,7 +212,7 @@
 		margin: 0px;
 		padding: 0px;
 		border: 0px;
-		
+
 	}
 	.input{
 		margin:0px;
@@ -214,7 +223,7 @@
 		background-color:transparent;
 		outline: none;
 		font-size:20px;
-		color: #FFFFF6;	
+		color: #FFFFF6;
 	}
 	.butt{
 		height: 100%;
@@ -222,8 +231,8 @@
 		padding: 0px;
 		width: 54px;
 		background-color:#FF99CC;
-		border:0px;	
-		
+		border:0px;
+
 	}
 	.list{
 		margin-top: -4px;
@@ -252,6 +261,6 @@
 		height: 40px;
 	}
 
-	
+
 
 </style>

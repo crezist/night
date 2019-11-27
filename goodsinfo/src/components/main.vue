@@ -1,13 +1,11 @@
 <template>
 	<div class="container">
-		二级路由
-		<input v-model="xiao" style="background-color: red;"/>
         <toolbar1></toolbar1>
-		<toolbar2 :abc="xiao"></toolbar2>
+		<toolbar2></toolbar2>
 		<carousel></carousel>
 		<goodsinfo2></goodsinfo2>
 		<retunrntop></retunrntop>
-	    
+
 	</div>
 </template>
 
@@ -17,7 +15,7 @@
 	import retunrntop from "@/components/retunrntop"
 	import toolbar1 from "@/components/toolbar1"
 	import toolbar2 from "@/components/toolbar2"
-	
+
 	export default{
 		components:{
 			carousel,
@@ -27,7 +25,7 @@
 			toolbar2,
 		},
 		data:function(){
-			return{	
+			return{
 				test:"",
 				xiao:"小心"
 			}
@@ -38,7 +36,7 @@
 		  }
 		},
 		methods:{
-			
+
 		},
 		mounted(){
 			this.test=this.$children[1].test;
@@ -55,7 +53,6 @@
 	.container{
 		width:1200px;
 		min-height:600px;
-		
+
 	}
 </style>
-
