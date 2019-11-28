@@ -44,7 +44,7 @@
 				cartlist:[],
 				temp:[],
 				ctids:[],
-				checkall:false,
+				checkall:false
 				
 			}
 		},
