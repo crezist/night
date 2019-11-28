@@ -66,10 +66,11 @@
         	success(result){
             console.log(result);
         	if(result){
+            ob.tostoreuser()
+        	}else{
             ob.suser=result
         		ob.tomyshop()
-        	}else{
-            ob.tostoreuser()
+
         	}
         	}
         })
