@@ -4,7 +4,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/mgj
     username: root
-    password: 123456
+    password: 444444
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
      initial-size: 20
