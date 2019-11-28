@@ -59,7 +59,7 @@
 
 <template>
 	<div class="container2">
-	<div class="box">
+	<div class="box">hh
 	<div  v-for="(good,i) in goods" class="picture" :class="{pic1:(i%3==0||i%7==0)}"  :style="good.sty">
 		<div class="goodsinfo" @click="todetail(good.gdid)">
 		<button> <i class="fa fa-thumbs-o-up"></i></button>
