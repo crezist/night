@@ -12,12 +12,8 @@ spring:
      max-active: 30
      max-wait: 60000
      time-between-eviction-runs-millis: 60000
-  resources:
-<<<<<<< HEAD
-    static-locations: classpath:/public,classpath:/static,file:d:/
-=======
-    static-locations: classpath:/public,classpath:/static,file:D:/web1
->>>>>>> 928cfc6090bd0e3f3b402294d4bd27b5b0111eee
+  resources: 
+    static-locations: classpath:/public,classpath:/static,file:D:/
     
 server:
   port: 8809

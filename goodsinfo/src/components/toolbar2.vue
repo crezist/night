@@ -138,9 +138,6 @@
 
 				}
 			});
-<<<<<<< HEAD
-			}
-=======
 			},
       tall(){
         if(this.user==null){
@@ -151,7 +148,6 @@
           this.$router.push({"name":"goodscollection",query:{"userid":this.user.userid}});
         }
       },
->>>>>>> 928cfc6090bd0e3f3b402294d4bd27b5b0111eee
 
 		},
 		mounted(){
@@ -169,10 +165,6 @@
 				   ob.style1={position:"fixed",top:"0px",boxShadow:"0px 6px 6px #FFFFFF"}
 				}else{
 				   ob.style1={position:"relative"}
-<<<<<<< HEAD
-=======
-
->>>>>>> 928cfc6090bd0e3f3b402294d4bd27b5b0111eee
 				}
 			})
 		}
@@ -188,22 +180,17 @@
 	.toolbar2 .left{
 		float:left;
 		margin-left:60px;
-<<<<<<< HEAD
-=======
 
->>>>>>> 928cfc6090bd0e3f3b402294d4bd27b5b0111eee
 	}
 	.toolbar2 .right{
     width:330px;
     height: 100px;
 		text-align:left;
 		line-height: 100px;
-<<<<<<< HEAD
     float: right;
 		position: relative;
     left: 30%;
-=======
->>>>>>> 928cfc6090bd0e3f3b402294d4bd27b5b0111eee
+
 
 	}
 	.toolbar2 .right div{

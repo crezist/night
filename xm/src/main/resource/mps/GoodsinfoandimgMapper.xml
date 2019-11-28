@@ -4,6 +4,6 @@
   <select id="selectgoodsbystore" resultType="map">
   SELECT goods.gdid,goods.gdname,img.gimgurl FROM  goodsinfo goods 
 				JOIN goodsimage img ON goods.gdid=img.gdid
-			WHERE img.gimgtype=1 AND goods.stid=#{stid}  LIMIT #{begin},#{last}
+			WHERE img.gimgtype=1 AND goods.stid=#{stid} 
   </select> 
 </mapper>

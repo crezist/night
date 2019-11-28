@@ -64,7 +64,6 @@
             resultType:"json",
             xhrFields:{"withCredentials":true},
         	success(result){
-            console.log(result);
         	if(result){
             ob.suser=result
         		ob.tomyshop()

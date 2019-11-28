@@ -49,10 +49,25 @@
         length:-1,
         style_1:{position: "absolute"},
         dl:true,
-        user:""
+        user:"",
+        stname:""
       }
     },
     methods:{
+      //查询店家名称（logo）
+      getlogo(){
+        var ob=this;
+        var url="http://127.0.0.1:8809/xm/StoreinfoController/selectstorename"
+        $.ajax(	url,{
+          data:{
+            stid:ob.stid,
+          },
+        xhrFields: {"withCredentials": true},
+        success:function(result){
+         console.log(result)
+        }
+        })
+      },
       //退出账号
       logdown(){
         if(confirm("确认退出账号？")){
@@ -136,6 +151,7 @@
       }
     },
     mounted(){
+      alert(this.$parent.toser())
       this.userisint();
      // this.getgoodsname()
      var ob =this;
@@ -144,7 +160,6 @@
          if(ob.style_1=={position: "fixed"}){
            return;
          }
-
           ob.style_1={position:"fixed",top:"0px"}
        }else{
          ob.style_1={position: "absolute"}
