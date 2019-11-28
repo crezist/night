@@ -65,10 +65,11 @@
             xhrFields:{"withCredentials":true},
         	success(result){
         	if(result){
+            ob.tostoreuser()
+        	}else{
             ob.suser=result
         		ob.tomyshop()
-        	}else{
-            ob.tostoreuser()
+
         	}
         	}
         })
