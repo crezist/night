@@ -30,7 +30,7 @@
        topup,
 
      },
-     data(){
+     data(){ 
        return{
          goods:[],
          ts:"",
