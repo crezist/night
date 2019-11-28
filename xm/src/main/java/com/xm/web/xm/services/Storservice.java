@@ -54,9 +54,9 @@ public class Storservice {
 	 * @param userid
 	 * @return
 	 */
-	public Storeuser selectstoreuserishave(int userid){
+	public List<Storeuser> selectstoreuserishave(int userid){
 		StoreuserExample example=new StoreuserExample();
 		example.createCriteria().andUseridEqualTo(userid);
-		return storeuserMapper.selectByExample(example).get(0);
+		return storeuserMapper.selectByExample(example);
 	}
 }

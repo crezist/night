@@ -1,5 +1,6 @@
 package com.xm.web.xm.controller;
 
+import java.awt.Stroke;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,11 @@ public class StoreinfoController {
 	 * @return
 	 */
 	@RequestMapping("selectgoodsbystore")
-	public List<Goodsinfo> selectgoodsbystore(int stid,int pagenums){
+	public List<Map> selectgoodsbystore(int stid,int pagenums){
 		return storeinfoService.selectallgoodsofstore(stid,pagenums);
+	}
+	@RequestMapping("selectstorename")
+	public Object selectstorename(int stid){
+		return storeinfoService.selectstore(stid);
 	}
 }

@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.collections.OrderedMap;
+import org.apache.ibatis.session.RowBounds;
 import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -41,7 +42,6 @@ public class TestUnit {
 	@Autowired
 	App_OrderMapper  ordermapper;
 	@Autowired
-<<<<<<< HEAD
 	GoodsinfoandimgMapper goodsinfoandimgMapper;
 	
 	
@@ -49,13 +49,14 @@ public class TestUnit {
 	public void test3(){
 		/*List<Integer> arr=new ArrayList<Integer>();
 		Collections.addAll(arr,1,5);*/
-		List<Map> list=goodsinfoandimgMapper.selectgoodsbystore(1,0,20);
+		RowBounds bounds=new RowBounds(0, 10);
+		List<Map> list=goodsinfoandimgMapper.selectgoodsbystore(1, bounds);
 		for (Map orderlist : list) {
-			System.out.println(orderlist.get("gdname")+":"+orderlist.get("gdia"));
-=======
-	LiDongxuService lidongxuService;
-	
-	@Test
+			System.out.println(orderlist.get("gdname")+":"+orderlist.get("gdid"));
+		}
+		}
+}
+/*	@Test
 	public void test3(){
 		List<Map> tt=lidongxuService.selectAllcollection(1);
 		for (int i = 0; i < tt.size(); i++) {
@@ -63,7 +64,5 @@ public class TestUnit {
 >>>>>>> 928cfc6090bd0e3f3b402294d4bd27b5b0111eee
 		}
 	}
-	
+	*/
 
-
-}

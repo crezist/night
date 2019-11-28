@@ -47,12 +47,14 @@ public class StoreuserController {
 	@RequestMapping("userisstoreuser")
 	public Object userisstoreuser(HttpSession session){
 		User user=(User)session.getAttribute("user");
-		Storeuser stuser=storservice.selectstoreuserishave(user.getUserid());
-		if(stuser==null){
-			return false;
-		}else{
-			return stuser.getStid();
-		}
+		List<Storeuser> stuser=storservice.selectstoreuserishave(user.getUserid());
+		System.out.println(stuser.get(0).getStid());
+//		if(stuser==null){
+//			return false;
+//		}else{
+//			return stuser.get(0).getStid();
+//		}
 //		return null;
+		return null;
 	}
 }
