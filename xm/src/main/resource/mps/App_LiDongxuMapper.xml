@@ -8,4 +8,10 @@ SELECT coll.gdid,goods.gdname,img.gimgurl,sprice.price FROM goodscollection coll
 				  JOIN goodsprice sprice ON coll.gdid=sprice.gdid
 				  WHERE userid=#{userid} AND img.gimgtype=1 AND utid=1
   </select>
+  <select id="selectgoodsinfo" resultType="map">
+SELECT goods.gdname,img.gimgurl,sprice.price FROM goodsinfo goods 
+		JOIN goodsimage img ON goods.gdid=img.gdid
+		JOIN goodsprice sprice ON goods.gdid=sprice.gdid
+		WHERE goods.gdid=#{gdid} AND sprice.utid=1 AND img.gimgtype=1
+  </select>
 </mapper>

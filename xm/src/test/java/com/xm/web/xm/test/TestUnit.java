@@ -24,6 +24,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.xm.web.xm.controller.GoodsinfoCtl;
+import com.xm.web.xm.mapper.App_LiDongxuMapper;
 import com.xm.web.xm.mapper.App_OrderMapper;
 import com.xm.web.xm.mapper.GoodsinfoandimgMapper;
 import com.xm.web.xm.pojo.Goodsinfo;
@@ -43,17 +44,13 @@ public class TestUnit {
 	App_OrderMapper  ordermapper;
 	@Autowired
 	GoodsinfoandimgMapper goodsinfoandimgMapper;
-	
+	@Autowired
+	LiDongxuService lidongxuServie;
 	
 	@Test
 	public void test3(){
-		/*List<Integer> arr=new ArrayList<Integer>();
-		Collections.addAll(arr,1,5);*/
-		RowBounds bounds=new RowBounds(0, 10);
-		List<Map> list=goodsinfoandimgMapper.selectgoodsbystore(1, bounds);
-		for (Map orderlist : list) {
-			System.out.println(orderlist.get("gdname")+":"+orderlist.get("gdid"));
-		}
+		Integer i= lidongxuServie.selectstoreid(1);
+		System.out.println(i);
 		}
 }
 /*	@Test

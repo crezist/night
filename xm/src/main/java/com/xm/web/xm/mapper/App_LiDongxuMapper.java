@@ -6,8 +6,8 @@ import java.util.Map;
 
 public interface App_LiDongxuMapper {
 	
-	
 	List<Map> getgoodscollection(Integer userid);
 	
+	Map selectgoodsinfo(Integer gdid);
    
 }
