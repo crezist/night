@@ -53,6 +53,6 @@ public class StoreuserController {
 		}else{
 			return stuser.get(0).getStid();
 		}
-
+//		return null;
 	}
 }
